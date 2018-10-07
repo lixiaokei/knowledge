@@ -1,0 +1,225 @@
+Gitlab
+
+代码托管平台
+- github
+- gitee
+- CODING
+
+两种规范的Git使用流程（分支管理策略）
+- git-flow
+- github-flow - PR（Pull Request）
+
+
+软件开发的过程模型
+
+传统过程模型 - 瀑布模型
+1. 可行性分析 - 做还是不做 - 可行性分析报告
+2. 需求分析 - 做什么 - 需求规格说明书 / 产品界面原型(prototypes)
+	产品经理 - Axure RP / Sketch / Briefs
+	头脑风暴 - 想到什么都能说 - 关键信息持有者
+	竞品分析 - 同类软件
+	市场调研 - 专业机构
+3. 概要设计/详细设计
+	面向对象的分析和设计(OOAD) - UML(统一建模语言) - 标准化的图形符号
+		用例图 / 类图 / 时序图
+	数据库设计 - 概念模型图/物理模型图 - PowerDesigner
+4. 编码 / 测试 / 调试 / 上线
+	单元测试 ---> 集成测试 ---> 系统测试 ---> 验收测试
+5. 交付 / 维护
+
+敏捷开发 - SCRUM
+
+将整个开发周期分为若干个2-4周的SPRINT - 增量迭代式开发
+1. 用户故事 - Backlog - 整理需求确定每个需求的重要性(优先级)
+2. 计划会议(1-2) - 确定要完成的用户故事并评估工作量 任务分配
+3. 日常开发 - 站立会议(15分钟) / 结对编程 / 番茄工作法 / TDD
+4. 测试 / 修复bug(1-2)
+5. Showcase / 评审会议
+
+JIRA / 禅道
+
+
+网站优化的两大定律：
+第一定律：使用缓存（空间换时间）- 尽可能从内存中获取数据不把压力全部施加到数据库上
+第二定律：能推迟做的事情都不要马上做（削峰） - 消息队列（把任务扔到队列中等待处理）
+
+消息队列还解决了上下游节点解耦合的问题
+
+在项目中使用缓存
+
+在settings.py中配置缓存
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': [
+            'redis://1.2.3.4:6379/0',
+        ],
+        'KEY_PREFIX': 'foo',
+    },
+    'cache1': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': [
+            'redis://1.2.3.4:6379/1',
+        ],
+    },
+    'cache2': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': [
+            'redis://1.2.3.4:6379/2',
+        ],
+    },
+}
+
+可以使用Django的@cache_page装饰器来实现页面缓存
+@cache_page(timeout=None)
+@cache_page(timeout=300, cache='cache1')
+
+使用Django-REST-framework时也可以用drf-extensions来实现缓存
+@cache_response(timeout=1800, cache='cache2', key_func=bar)
+如果不配置key_func，drf-extensions会用默认的缓存的key生成策略
+而这个策略是基于SQL语句来缓存查询结果，实际开发时可能需要根据请求的URL来缓存结果
+这就需要自定义key_func来解决，例如：
+
+def customize_cache_key(view_instance, view_method, request, args, kwargs):
+    full_path = request.get_full_path()
+    return f'house:api:{full_path}'
+
+Django中实现异步任务/定时任务 - Celery（分布式调度）
+pip install celery
+
+因为Celery只提供了消息的生产者和消费者并没有提供消息队列服务
+所以需要自己安装消息队列服务 - RabbitMQ / Redis （官方推荐使用这两个）
+ActiveMQ / ZeroMQ / RabbitMQ / RocketMQ
+
+使用Docker安装RabbitMQ
+docker pull rabbitmq
+docker run -d -p 5672:5672 --name myrabbitmq rabbitmq
+docker exec -it myrabbitmq /bin/bash
+
+配置RabbitMQ
+rabbitmqctl add_user luohao 123456
+rabbitmqctl set_user_tags luohao administrator
+rabbitmqctl add_vhost vhost1
+rabbitmqctl set_permissions -p vhost1 luohao ".*" ".*" ".*"
+
+在Django项目中读取配置并创建Celery实例
+# 注册环境变量 - 让Celery能够读取项目的配置文件
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'house.settings')
+# 创建Celery实例并指定消息中间人(RabbitMQ)的URL
+app = celery.Celery('house',
+                    broker='amqp://luohao:123456@120.77.222.217:5672/vhost1')
+# 从项目的配置文件读取Celery配置信息
+app.config_from_object('django.conf:settings')
+# 从指定的文件(例如celery_config.py)中读取Celery配置信息
+# app.config_from_object('celery_config')
+# 让Celery自动从参数指定的应用中发现异步任务/定时任务
+app.autodiscover_tasks(['common'])
+# 让Celery自动从所有注册的应用中发现异步任务/定时任务
+# app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+
+接下来通过@app.task()来注册异步任务函数和定时任务函数 例如：
+
+@app.task()
+def foo():
+    pass
+
+当通过foo.delay()执行函数foo时就向消息队列生产了一条消息(消息的生产者)
+
+
+配置定时任务(计划任务)
+
+app.conf.update(
+    timezone=settings.TIME_ZONE,
+    enable_utc=True,
+    beat_schedule={
+        'task1': {
+            'task': 'foo',
+            'schedule': crontab(),
+            'args': ()
+        },
+    },
+)
+
+对于定时任务(计划任务)
+可以通过celery -A app beat来启动定时任务(消息的生产者)
+可以通过celery -A app worker来处理消息(消息的消费者)
+
+如果没有启动消息的消费者，消息就会在消息队列中积压
+
+定时任务 / 计划任务
+celery
+django-crontab
+schedule
+
+加密
+对称加密 - AES - 加密和解密使用同一个密钥
+非对称加密 - RSA - 加密和解密使用不同的密钥
+
+富文本编辑器
+ckeditor / kindeditor / ueditor
+
+pip install django-ckeditor
+
+unittest / django.test
+coverage / pytest / tox
+
+等价类 / 边界值
+
+ab / webbench / sysbench 
+mysqlslap
+JMeter / LoadRunner / QTP
+
+访问控制/权限控制
+RBAC - 基于角色的访问控制
+User - Role - Permission
+ACL - 访问控制列表
+
+
+URL去重 - 集合
+内容去重
+1. 计算hash摘要 - hashlib
+2. Bloom-Filter - 布隆过滤器 - murmurhash
+
+User-Agent:
+Accept-Language:
+Accept-Encoding:
+Referer:
+Cookie:
+
+隐匿身份 - IP代理 - 购买商用IP代理(芝麻代理/蘑菇代理)
+        - tor - 洋葱路由
+
+动态内容 - Selenium + PhontomJS / Chrome/ Firefox
+        - JavaScript逆向
+
+表单登录 - 模拟登录（令牌 / 隐藏字段）
+        - RoboBrowser
+        - Cookie池
+
+验证码 - OCR+机器学习（商业项目不考虑）
+      - 超级鹰 / 云打码
+
+
+集群（水平扩展）---> 负载均衡（Nginx/LVS/HAProxy）---> 双活（Keepalived） 
+
+
+uWSGI
+Gunicorn
+
+django-haystack
+Haystack
+
+ElasticSearch / Solr
+Whoosh
+
+分词 / 中文分词 (jieba)
+倒排索引
+
+1. 中国 股民 近期 亏损 150亿
+2. 股民 跳楼 概率 近期 明显 增加
+3. 中国 男子 国家 足球队 勇夺 小力神杯
+
+中国（1，3）
+股民（1，2）
+亏损（1）
+跳楼（2）

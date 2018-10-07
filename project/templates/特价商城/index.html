@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>今日特卖</title>
+    <link rel="stylesheet" type="text/css" href="style/public.css">
+    <link rel="stylesheet" type="text/css" href="style/home.css">
+	<link rel="stylesheet" type="text/css" href="style/footer.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="style/reset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="style/common1.css" media="all">
+
+<!--首页幻灯js-->
+<script type="text/javascript" src="style/zepto.js"></script>
+<script type="text/javascript" src="style/swipe.js"></script>
+<!--首页幻灯js end-->
+</head>
+<body>
+    <div class="loading_page" style="display: none;"></div>
+	
+	<div style="overflow:hidden;">
+	   <div class="clearboth wrap-logo-zn " id="logo"><img src="images/logo-zn.png"></div>
+       <div class="searchnew" id="searchContainer"><div class="products-search-item"><div class="main-nav-search "><div class="input-group"><input autocomplete="off" id="input-main-nav-search" class="form-control" title="产品搜索" placeholder="年货快到碗里来！" type="search"><span class="input-group-btn"><button class="btn5 submit" type="submit" id="btnSearch"><i class="search-icon"></i></button></span></div></div></div></div>
+	</div>
+	
+    <div class="banner openwebview" >
+	
+	
+	    <div style="-webkit-transform:translate3d(0,0,0);">
+		<div id="banner_box" class="box_swipe">
+			<ul style="list-style: none outside none; transition-duration: 500ms;">
+					<li>
+						<a onClick="return false;">
+							<img src="images/200.jpg" alt="2" style="width:100%;">
+						</a>
+					</li>
+					<li>
+						<a onClick="return false;">
+							<img src="images/200.jpg" alt="2" style="width:100%;">
+						</a>
+					</li>
+							</ul>
+			<ol>
+									
+				<li class="on"></li>
+				<li></li>
+			</ol>
+		</div>
+	</div>
+		<script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:3000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+		});
+	</script>
+
+	</div>
+    <div class="prefecture clearfix openwebview" style="margin-bottom: 8px;">
+	 <a href="liebiao.html" data-url="/novelty/list" class="cool" page_click_button="新奇库">
+        <img class="fadeInImg" src="sy_img/2.jpg">
+        <i><img class="fadeInImg" src="sy_img/xinqiku_i.png"></i>
+     </a>
+<div class="prefecture_r">
+    <a href="liulanlishi liebiao2.html" data-url="/recommendproduct/index" class="sale" page_click_button="特卖汇">
+        <img class="fadeInImg" src="sy_img/3.jpg">
+        <i>特卖汇</i>
+        <span>1月10日更新</span>
+    </a>
+</div>
+<div class="prefecture_rb clearfix">
+    <a href="javascript:;" data-url="/preview/index" class="soon" page_click_button="即将开售">
+        <img class="fadeInImg" src="sy_img/4.jpg">
+        <i><b>即将开售</b><em>+21</em></i>
+    </a>
+    <a href="javascript:;" data-url="/popular/list" class="popular" page_click_button="正在流行">
+        <img class="fadeInImg" src="sy_img/5.jpg">
+        <i>正在流行</i>
+    </a>
+</div>
+</div>
+    <div class="recommend openwebview">
+        <!--<div style="display: block;" class="tit">
+            <h2>您的专属推荐</h2>
+        </div>-->
+        <div class="wrap"><div class="item" page_click_button="类目_生活家">
+    <div class="caption">
+        <h3 class="caption_life"><a href="">生活家</a></h3>
+        <!--<span class="browse">(3.6万人正在浏览)</span>-->
+    </div>
+    <div class="item_brand"><a href="javascript:;" data-url="/index/activity/show/aid/3249" page_click_button="活动">
+            <img class="fadeInImg" _src="//upload1/2015/0109/5b628ff536acfadbf20fa304389f7b87-142080897751563300.jpg" src="sy_img/5b628ff536acfadbf20fa304389f7b87-142080897751563300.jpg">
+            
+        </a></div>
+    <div class="item_con clearfix" page_click_button="单品">
+        <dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012273794234&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0108/thumb_468_468_0195b80b910d6e07dad39ba9488a604c-142068899393529400.jpg?imageView2/0/w/608/h/608" src="sy_img/thumb_468_468_0195b80b910d6e07dad39ba9488a604c-1420688993935.jpg"></a></dt><dd><p class="txt">样样Q牛津布衣物折叠收纳篮</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>17.6</em></span><span class="old_price"><i>￥</i><em>47.8</em></span></div></dd></dl><dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012276248249&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0109/thumb_608_608_3473c485f3b279ad10589c72099a0fb0-142077246424044300.jpg" src="sy_img/thumb_608_608_3473c485f3b279ad10589c72099a0fb0-1420772464240.jpg"></a></dt><dd><p class="txt">【包邮14.5】艾可思便携带盖硅胶套防漏杯</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>14.5</em></span><span class="old_price"><i>￥</i><em>80</em></span></div></dd></dl>
+    </div>
+</div>
+<div class="item" page_click_button="类目_数码城">
+    <div class="caption">
+        <h3 class="caption_digital"><a href="">数码城</a></h3>
+        <!--<span class="browse">(3.6万人正在浏览)</span>-->
+    </div>
+    <div class="item_brand"><a href="javascript:;" data-url="/index/activity/show/aid/3191" page_click_button="活动">
+            <img class="fadeInImg" _src="sy_img/e070369188bbeec93545a11d97c6e5d3-142063605780044600.jpg" src="sy_img/e070369188bbeec93545a11d97c6e5d3-142063605780044600.jpg">
+            <span class="special">特卖</span>
+        </a></div>
+    <div class="item_con clearfix" page_click_button="单品">
+        <dl><dt><div class="place_link"><img class="fadeInImg" _src="sy_img/thumb_468_468_4a7a25345ae30006f302f62b1516b221-142053500135457700.jpg?imageView2/0/w/608/h/608" src="sy_img/thumb_468_468_4a7a25345ae30006f302f62b1516b221-1420535001354.jpg"><span class="special">特卖</span><div class="list_nothing_bg"></div><div class="list_nothing"></div></div></dt><dd><p class="txt">大神F2 移动联通电信7模4G全网通 </p><div class="price clearfix"><span class="now_price"><i>￥</i><em>899</em></span></div></dd></dl>
+    </div>
+</div>
+<div class="item" page_click_button="类目_女人街">
+    <div class="caption">
+        <h3 class="caption_lady"><a href="">女人街</a></h3>
+        <!--<span class="browse">(3.6万人正在浏览)</span>-->
+    </div>
+    <div class="item_brand">
+	   <a href="javascript:;" data-url="/index/activity/show/aid/3205" page_click_button="活动">
+            <img class="fadeInImg" _src="sy_img/5f3a79f571e3bce6f849766ffd881faa-142053787039866000.jpg" src="sy_img/5f3a79f571e3bce6f849766ffd881faa-142053787039866000.jpg">
+            <span class="special">特卖</span>
+        </a></div>
+    <div class="item_con clearfix" page_click_button="单品">
+        <dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012268535225&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0107/thumb_608_608_2a763c9b4730e1e729836150cb14064c-142062372441312500.jpg" src="sy_img/thumb_608_608_2a763c9b4730e1e729836150cb14064c-1420623724413.jpg"></a></dt><dd><p class="txt">中老年加厚纯棉保暖高领内衣套装</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>39.9</em></span><span class="old_price"><i>￥</i><em>79</em></span></div></dd>
+		</dl>
+		<dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012276432256&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0109/thumb_608_608_6672c393d2b81205554d7d2a1ba4521f-142078611087284600.jpg" src="sy_img/thumb_608_608_6672c393d2b81205554d7d2a1ba4521f-1420786110872.jpg"></a></dt><dd><p class="txt">中长款长袖女打底衫加厚加绒冬潮大码女装</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>29</em></span><span class="old_price"><i>￥</i><em>149</em></span></div></dd>
+		</dl>
+    </div>
+</div>
+<div class="item" page_click_button="类目_男人馆">
+    <div class="caption">
+        <h3 class="caption_man"><a href="">男人馆</a></h3>
+        <!--<span class="browse">(3.6万人正在浏览)</span>-->
+    </div>
+    <div class="item_brand"><a href="javascript:;" data-url="/index/activity/show/aid/3265" page_click_button="活动">
+            <img class="fadeInImg" _src="//upload1/2015/0109/8e157bcbaf49362fb69e8139cdf7f4b5-142081131769634200.jpg" src="sy_img/8e157bcbaf49362fb69e8139cdf7f4b5-142081131769634200.jpg">
+            
+        </a></div>
+    <div class="item_con clearfix" page_click_button="单品">
+        <dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012276431255&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0109/thumb_468_468_b655efddaffd062839eb7fdf7d0688b3-142078601514321200.jpg?imageView2/0/w/608/h/608" src="sy_img/thumb_468_468_b655efddaffd062839eb7fdf7d0688b3-1420786015143.jpg"></a></dt><dd><p class="txt">男士高帮时尚韩版透气软面休闲鞋</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>49</em></span><span class="old_price"><i>￥</i><em>299</em></span></div></dd></dl><dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012276718265&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0109/thumb_608_608_cb0efa133700b6816b1eb0ccf7d71982-142080622797377900.jpg" src="sy_img/thumb_608_608_cb0efa133700b6816b1eb0ccf7d71982-1420806227973.jpg"></a></dt><dd><p class="txt">【拍下69】套头毛衣男韩版圆领修身男士毛衣</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>69</em></span><span class="old_price"><i>￥</i><em>259</em></span></div></dd></dl>
+    </div>
+</div>
+<div class="item" page_click_button="类目_美妆屋">
+    <div class="caption">
+        <h3 class="caption_beauty"><a href="">美妆屋</a></h3>
+        <!--<span class="browse">(3.6万人正在浏览)</span>-->
+    </div>
+    <div class="item_brand"><a href="javascript:;" data-url="/index/activity/show/aid/3217" page_click_button="活动">
+            <img class="fadeInImg" _src="//upload1/2015/0108/35c985d3fdcc66e159926baf654da694-142071946076591900.jpg" src="sy_img/35c985d3fdcc66e159926baf654da694-142071946076591900.jpg">
+            
+        </a></div>
+    <div class="item_con clearfix" page_click_button="单品">
+        <dl><dt><a href="javascript:;" data-url="//product/detail?pid=15011264403"><img class="fadeInImg" _src="//upload1/2015/0105/thumb_468_468_b9f9c4d3afd79acea8914a418d2e14d2-142044978105300900.jpg?imageView2/0/w/296/h/296" src="sy_img/thumb_468_468_b9f9c4d3afd79acea8914a418d2e14d2-1420449781053.jpg"></a></dt><dd><p class="txt">日本utena 碎发定型膏</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>42</em></span></div></dd></dl><dl><dt><a href="javascript:;" data-url="//product/detail?pid=15011264447"><img class="fadeInImg" _src="//upload1/2015/0105/thumb_468_468_0c40614d4f5e0104e7f802c480b12e3e-142045148445172300.jpg?imageView2/0/w/296/h/296" src="sy_img/thumb_468_468_0c40614d4f5e0104e7f802c480b12e3e-1420451484451.jpg"></a></dt><dd><p class="txt">美国Goody歌妮快干发梳</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>89</em></span></div></dd></dl>
+    </div>
+</div>
+<div class="item" page_click_button="类目_亲子社">
+    <div class="caption">
+        <h3 class="caption_paternity"><a href="">亲子社</a></h3>
+        <!--<span class="browse">(3.6万人正在浏览)</span>-->
+    </div>
+    <div class="item_brand"><a href="javascript:;" data-url="/index/activity/show/aid/3252" page_click_button="活动">
+            <img class="fadeInImg" _src="//upload1/2015/0109/76e6bedf9351e972b67fe7c10742158c-142079146080774900.jpg" src="sy_img/76e6bedf9351e972b67fe7c10742158c-142079146080774900.jpg">
+            
+        </a></div>
+    <div class="item_con clearfix" page_click_button="单品">
+        <dl><dt><a href="javascript:;" data-url="//product/detail?pid=15012276275252&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0109/1f53367b251e1ae899be770494eb9670-142077460304618100.jpg?imageView2/0/w/608/h/608" src="sy_img/1f53367b251e1ae899be770494eb9670-142077460304618100.jpg"></a></dt><dd><p class="txt">幼儿园卡通姓名贴不干胶36张</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>5</em></span></div></dd>
+			</dl>
+			<dl>
+			<dt><a href="javascript:;" data-url="//product/detail?pid=15012272082232&amp;from=1"><img class="fadeInImg" _src="//upload1/2015/0108/thumb_608_608_5e431fa51efd0634e39add2ab1d208b3-142068559323679400.jpg" src="sy_img/thumb_608_608_5e431fa51efd0634e39add2ab1d208b3-1420685593236.jpg"></a>
+			</dt>
+			<dd><p class="txt">【拍下9.9】可爱龙猫公仔45CM龙猫抱枕毛绒玩具</p><div class="price clearfix"><span class="now_price"><i>￥</i><em>9.9</em></span><span class="old_price"><i>￥</i><em>24</em></span></div>
+			</dd>
+		</dl>
+    </div>
+</div>
+
+
+
+		<div class="layout-login-area" id="footer">
+			<div class="layout-login">
+						<span class="layout-lg-bar">528062317@qq.com </span>
+						<span class="layout-new-fr"><a href="">反馈</a></span>
+			</div>
+
+			<div class="layout-copyright">© 河北-向暖 版权所有</div>
+	 </div>
+
+
+
+
+</div>
+    </div>
+	
+    <div style="display: block;" class="footer_bar openwebview">
+        <ul class="warp clearfix">
+            <li><!--<li class="on">-->
+                <a href="/home/index" page_click_button="底部_首页">
+                    <i class="new_icon"></i>
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="fenlei.html" page_click_button="底部_品牌">
+                    <i class="new_icon"></i>
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="user.html" data-url="/i/index" page_click_button="底部_我的" class="to_personalcenter personalcenternum">
+                    <i class="new_icon"><strong style="display: none;"></strong></i>
+                    <span>我的</span>
+                </a>
+            </li>
+            <li>
+                <a href="gouwuche.html" data-url="/shoppingcart/index" page_click_button="底部_购物车" class="new_car_center">
+                    <i class="new_icon"><strong style="">2</strong></i>
+                    <span>购物车</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+</body>
+
+</html>
