@@ -1,27 +1,3 @@
-## 成都校区Python1803班授课计划
-
-### 第01天
-
-#### Python就业形式和方向分析
-
-1. 就业方向
-
-   - Python后端开发工程师（Django、Flask、Tornado、Twisted、RESTful、MySQL、Redis、MongoDB）
-   - Python爬虫开发工程师（Scrapy、PySpider、Appium、Redis、MongoDB、HTTP(S)、TCP/IP、Wireshark）
-   - Python量化交易开发工程师（数据结构和算法、金融知识、数字货币）
-   - Python数据分析工程师（机器学习算法、NumPy、SciPy、Pandas、Matplotlib）
-   - Python自动化测试（运维）工程师（Linux、Shell、Selenium、Robot Framework）
-
-2. 面试加分项
-
-   - 有自己的Github开源项目和博客。
-   - 有分布式项目开发经验。（Nginx、LVS、Keepalived、Docker）
-   - 有项目性能调优和安全相关经验。（AB、WebBench、SysBench、LoadRunner）
-   - 有使用行业工具和中间件的经验。（RabbitMQ、Zabbix、Nagios、ElasticSearch、Solr）
-   - 有前端开发的相关知识。（jQuery、Axios、Bootstrap、Vue.js）
-   - 有其他语言开发经验（项目技术栈迁移能力）。（Java、C/C++）
-   - 有大数据开发相关经验。（Hadoop，HBase，Spark，MapReduce）
-
 #### Python基础知识点回顾
 
 1. 数据结构和算法
@@ -504,7 +480,6 @@
    - 协程和异步I/O
    - concurrent.futures
 
-### 第02天
 
 #### 团队项目介绍
 
@@ -565,7 +540,7 @@
    |      | 查看评论 | 白元芳 | 正在进行 | 20%  | 4    | 2018/8/7 |          | 2018/8/7 |          | 需要进行代码审查 |
    |      | 评论投票 | 白元芳 | 等待     | 0%   | 4    | 2018/8/8 |          | 2018/8/8 |          |                  |
 
-### 第03天
+
 
 #### 创建项目
 
@@ -604,7 +579,6 @@
 2. 文档的使用者
 3. API接口文档的撰写（[《网络API接口设计》](网络API接口设计.md)）
 
-### 第04天
 
 #### 使用Scrapy为项目采集数据
 
@@ -621,7 +595,6 @@
 4. MongoDB副本集的创建和管理
 5. MongoDB分片和集群介绍
 
-### 第05天-第09天
 
 #### 项目开发中的公共问题
 
@@ -642,7 +615,6 @@
 2. 编写单元测试（unitest、TestCase）
 3. 测试覆盖率（Coverage）
 
-### 第10天
 
 #### 项目部署
 
@@ -655,28 +627,4 @@
 4. uWSGI/Gunicorn和Nginx的使用
 5. 虚拟化容器（Docker）
 
-#### 性能测试
 
-1. AB的使用
-2. SQLslap的使用
-3. sysbench的使用
-
-#### 自动化测试
-
-1. 使用Shell和Python进行自动化测试
-2. 使用Selenium实现自动化测试
-3. 测试工具Robot Framework介绍
-
-### 第11天-第12天
-
-#### 项目性能调优
-
-1. 数据库性能调优
-2. 代码性能调优
-3. 静态文件服务器和CDN加速
-
-#### 项目答辩和模拟面试
-
-1. Showcase（参与人、时间、方式、环境、内容、问题）
-2. 简历指导
-3. 面试话术
